@@ -111,18 +111,7 @@ class Question {
 // ● nextQuestion: Advances to the next question in the quiz by incrementing the currentQuestionIndex. 
 // ● submitAnswer: Takes a user's answer as a parameter, checks if the answer is correct using the checkAnswer method of the Question class, and updates the score if the answer is correct.nn 
 
-// ● currentQuestionIndex(number): The index of the current question in the questions array. 
-// ● score(number): The user’s current score. 
-// The Quiz class should have the following methods: 
-// ● addQuestion: Takes a Question object as a parameter and adds it to the questions array. 
-// ● nextQuestion: Advances to the next question in the quiz by incrementing the currentQuestionIndex. 
-// ● submitAnswer: Takes a user's answer as a parameter, checks if the answer is correct using the checkAnswer method of the Question class, and updates the score if the answer is correct.                                            
-// ● currentQuestionIndex(number): The index of the current question in the questions array. 
-// ● score(number): The user’s current score. 
-// The Quiz class should have the following methods: 
-// ● addQuestion: Takes a Question object as a parameter and adds it to the questions array. 
-// ● nextQuestion: Advances to the next question in the quiz by incrementing the currentQuestionIndex. 
-// ● submitAnswer: Takes a user's answer as a parameter, checks if the answer is correct using the checkAnswer method of the Question class, and updates the score if the answer is correct.                       e checkAnswer method of the Question class, and updates the score if the answer is correct.
+
 
 class Quiz {
     constructor() {
@@ -134,13 +123,11 @@ class Quiz {
     addQuestion(question) {
         this.questions.push(question);
     }
-
     nextQuestion() {
         if (this.currentQuestionIndex < this.questions.length - 1) {
             this.currentQuestionIndex++;
         }
     }
-
     submitAnswer(answer) {
         const currentQuestion = this.questions[this.currentQuestionIndex];
         if (currentQuestion.checkAnswer(answer)) {
@@ -148,11 +135,26 @@ class Quiz {
         }
         this.nextQuestion();
     }
-
     getCurrentQuestion() {
         return this.questions[this.currentQuestionIndex];
     }
 }
+
+const question1 = new Question("What data structure uses the LIFO principle?", ["stacks", "list", "queues", "tuples"], "stacks");
+const question2 = new Question("Who is the president of Uganda?", ["Yoweri", "Kagame", "Ruto", "Obama"], "Yoweri");
+const question3 = new Question("What is LLM in full?", ["Live Love Make", "Life Long Money", "Large Language Models", "no meaning"], "Large Language Models");
+
+const myQuiz = new Quiz();
+myQuiz.addQuestion(question1);
+myQuiz.addQuestion(question2);
+myQuiz.addQuestion(question3);
+
+console.log(myQuiz.getCurrentQuestion().text); 
+myQuiz.submitAnswer("stacks"); 
+myQuiz.submitAnswer("Yoweri"); 
+myQuiz.submitAnswer("Large Language Models"); 
+
+
 
 
 
